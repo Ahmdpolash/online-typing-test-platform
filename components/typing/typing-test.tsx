@@ -69,16 +69,25 @@ export function TypingTest(props: TypingTestProps) {
     onDifficultyToggle, onRestart,
   } = useTypingTest({ ...props, onWrongKey });
 
-  // Re-focus the hidden input on any keypress when blurred
+  // Global F5 key listener to restart test instantly instead of browser refresh
   useEffect(() => {
-    const handleGlobalKeyDown = () => {
-      if (!isFocused && inputRef.current) {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "F5") {
+        e.preventDefault();
+        if (showResults) {
+          handleResultsRestart();
+        } else {
+          onRestart();
+        }
+        return;
+      }
+      if (!isFocused && !showResults && inputRef.current) {
         inputRef.current.focus();
       }
     };
-    document.addEventListener("keydown", handleGlobalKeyDown);
-    return () => document.removeEventListener("keydown", handleGlobalKeyDown);
-  }, [isFocused, inputRef]);
+    window.addEventListener("keydown", handleGlobalKeyDown);
+    return () => window.removeEventListener("keydown", handleGlobalKeyDown);
+  }, [isFocused, showResults, inputRef, onRestart, handleResultsRestart]);
 
   if (showResults) {
     return (
@@ -289,7 +298,7 @@ export function TypingTest(props: TypingTestProps) {
           restart
         </button>
         <span className="text-muted-foreground/60 text-xs">
-          tab + enter to reset
+          tab + enter or f5 to reset
         </span>
       </motion.div>
     </div>

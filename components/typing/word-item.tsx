@@ -44,8 +44,8 @@ export const WordItem = memo(function WordItem({
         if ((isPast || isActive) && cIdx < displayInput.length) {
           color =
             displayInput[cIdx] === char
-              ? "text-foreground font-semibold"
-              : "text-destructive font-semibold";
+              ? "text-foreground"
+              : "text-destructive";
         }
         const isLastChar = cIdx === word.length - 1;
 
@@ -90,7 +90,7 @@ export const WordItem = memo(function WordItem({
           .slice(word.length)
           .split("")
           .map((char, eIdx) => (
-            <span className="font-semibold text-destructive" key={`extra-${eIdx}`}>
+            <span className="text-destructive" key={`extra-${eIdx}`}>
               {char}
             </span>
           ))}

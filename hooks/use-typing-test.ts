@@ -383,6 +383,12 @@ export function useTypingTest({
 
       if (e.metaKey || e.ctrlKey || e.altKey) return;
 
+      if (e.key === "F5") {
+        e.preventDefault();
+        resetTest();
+        return;
+      }
+
       if (e.key === "Tab") {
         e.preventDefault();
         tabPressedRef.current = true;

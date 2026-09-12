@@ -12,10 +12,13 @@ export function getQuote(length: QuoteLength): {
   words: string[];
   author: string;
 } {
-  const [min, max] = BOUNDS[length];
+  const [min, max] = BOUNDS[length] ?? BOUNDS.medium;
   const pool = rawQuotes.filter(
     (q) => q.text.length >= min && q.text.length <= max
   );
-  const quote = pool[Math.floor(Math.random() * pool.length)];
-  return { words: quote!.text.split(" "), author: quote!.from };
+  const candidatePool = pool.length > 0 ? pool : rawQuotes;
+  const quote =
+    candidatePool[Math.floor(Math.random() * candidatePool.length)] ??
+    rawQuotes[0]!;
+  return { words: quote.text.split(" "), author: quote.from };
 }

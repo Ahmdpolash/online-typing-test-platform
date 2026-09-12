@@ -79,11 +79,11 @@ export default function Page() {
             Built with ❤️ by{" "}
             <a
               className="text-muted-foreground/60 underline-offset-2 hover:text-foreground hover:underline"
-              href={siteConfig.url}
+              href={siteConfig.creatorUrl}
               rel="noopener noreferrer"
               target="_blank"
             >
-              Typester
+              Polash
             </a>
           </p>
         </footer>

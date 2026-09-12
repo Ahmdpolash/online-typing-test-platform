@@ -28,23 +28,14 @@ export interface TestControlsProps {
 }
 
 export function TestControls(props: TestControlsProps) {
-  const { controlsVisible } = props;
-
   return (
-    <motion.div
-      animate={{ opacity: controlsVisible ? 1 : 0 }}
-      className={cn(
-        "flex items-center justify-center",
-        !controlsVisible && "pointer-events-none select-none"
-      )}
-      transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
-    >
+    <div className="flex items-center justify-center">
       <div className="hidden md:block">
         <DesktopToolbar {...props} />
       </div>
       <div className="block md:hidden">
         <MobileToolbar {...props} />
       </div>
-    </motion.div>
+    </div>
   );
 }

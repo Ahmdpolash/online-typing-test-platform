@@ -17,7 +17,7 @@ export const MODES = [
 export const pillEase = { duration: 0.2, ease: [0.23, 1, 0.32, 1] } as const;
 
 export const groupClass =
-  "flex items-center rounded-[14px] bg-black/[0.04] p-1 dark:bg-white/[0.04]";
+  "flex items-center rounded-[16px] bg-black/[0.04] p-1.5 dark:bg-white/[0.06]";
 
 export function Toggle({
   active,
@@ -31,10 +31,10 @@ export function Toggle({
   return (
     <motion.button
       className={cn(
-        "flex items-center gap-1 rounded-[10px] px-2.5 py-1.5 font-medium text-[11px] transition-colors duration-150",
+        "flex cursor-pointer items-center gap-1.5 rounded-[11px] px-3 py-1.5 font-medium text-[13px] transition-colors duration-150",
         active
           ? "text-primary"
-          : "text-muted-foreground/50 hover:text-muted-foreground/70"
+          : "text-muted-foreground/60 hover:text-foreground"
       )}
       onClick={onClick}
       type="button"
@@ -59,10 +59,10 @@ export function Selector({
   return (
     <motion.button
       className={cn(
-        "relative z-10 flex items-center gap-1 rounded-[10px] px-3 py-1.5 font-medium text-[11px] transition-colors duration-150",
+        "relative z-10 flex cursor-pointer items-center gap-1.5 rounded-[11px] px-3.5 py-1.5 font-medium text-[13px] transition-colors duration-150",
         active
           ? "text-primary"
-          : "text-muted-foreground/50 hover:text-muted-foreground/70"
+          : "text-muted-foreground/60 hover:text-foreground"
       )}
       onClick={onClick}
       type="button"
@@ -71,7 +71,7 @@ export function Selector({
       {children}
       {active && (
         <motion.span
-          className="absolute inset-0 rounded-[10px] bg-primary/20 dark:bg-primary/10"
+          className="absolute inset-0 rounded-[11px] bg-primary/20 dark:bg-primary/15"
           layoutId={layoutId}
           transition={pillEase}
         />
@@ -81,7 +81,7 @@ export function Selector({
 }
 
 export function Sep() {
-  return <div className="mx-0.5 h-4 w-px bg-black/10 dark:bg-white/[0.06]" />;
+  return <div className="mx-1 h-4.5 w-px bg-black/10 dark:bg-white/[0.08]" />;
 }
 
 export function SubOptions({

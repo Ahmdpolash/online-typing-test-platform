@@ -31,15 +31,15 @@ export function DesktopToolbar({
 }: TestControlsProps) {
   return (
     <LayoutGroup id="toolbar">
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2.5">
         {/* Toggles */}
         <div className={groupClass}>
           <Toggle active={punctuation} onClick={onPunctuationToggle}>
-            <At size={13} weight="duotone" />
+            <At size={15} weight="duotone" />
             punctuation
           </Toggle>
           <Toggle active={numbers} onClick={onNumbersToggle}>
-            <Hash size={13} weight="duotone" />
+            <Hash size={15} weight="duotone" />
             numbers
           </Toggle>
           <Sep />
@@ -66,7 +66,7 @@ export function DesktopToolbar({
               layoutId="mode"
               onClick={() => onModeChange(value)}
             >
-              <Icon size={13} />
+              <Icon size={15} />
               {label}
             </Selector>
           ))}

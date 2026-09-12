@@ -5,5 +5,5 @@ export const siteConfig = {
   url: "https://github.com/Ahmdpolash/online-typing-test-platform",
   github: "https://github.com/Ahmdpolash/online-typing-test-platform",
   creator: "Polash",
-  creatorUrl: "https://github.com/Ahmdpolash",
+  creatorUrl: "https://www.linkedin.com/in/polashahmed",
 };

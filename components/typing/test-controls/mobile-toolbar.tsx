@@ -37,7 +37,7 @@ function DrawerChip({
   return (
     <button
       className={cn(
-        "flex items-center gap-1.5 rounded-xl px-3.5 py-2 font-medium text-xs transition-colors duration-150",
+        "flex cursor-pointer items-center gap-1.5 rounded-xl px-3.5 py-2 font-medium text-xs transition-colors duration-150",
         active
           ? "bg-primary/10 text-primary"
           : "bg-foreground/[0.04] text-muted-foreground/50 hover:text-muted-foreground"

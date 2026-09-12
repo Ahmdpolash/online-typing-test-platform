@@ -19,10 +19,10 @@ interface TypingTestProps {
 }
 
 const FONT_SIZE_STYLES = {
-  small: "text-xl h-[6.8rem]",
-  medium: "text-2xl h-[7.8rem]",
-  large: "text-3xl h-[9.6rem]",
-  xlarge: "text-4xl h-[11.8rem]",
+  small: "text-xl leading-[2.6rem] h-[7.8rem]",
+  medium: "text-2xl leading-[2.8rem] h-[8.4rem]",
+  large: "text-3xl leading-[3.2rem] h-[9.6rem]",
+  xlarge: "text-4xl leading-[3.8rem] h-[11.4rem]",
 };
 
 const FONT_WEIGHT_STYLES = {
@@ -212,7 +212,7 @@ export function TypingTest(props: TypingTestProps) {
                 opacity: wordsOpacity,
                 filter: resetting ? "blur(4px)" : "blur(0px)",
               }}
-              className="flex flex-wrap gap-x-2.5 gap-y-1"
+              className="flex flex-wrap gap-x-2.5 gap-y-0"
               transition={
                 resetting
                   ? { duration: 0.15, ease: "easeOut" }

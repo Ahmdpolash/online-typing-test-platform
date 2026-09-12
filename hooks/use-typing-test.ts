@@ -474,7 +474,7 @@ export function useTypingTest({
         requestAnimationFrame(() => {
           if (!activeWordRef.current) return;
           const word = activeWordRef.current;
-          const lineH = word.offsetHeight + 4;
+          const lineH = word.offsetHeight;
           const row = Math.round(word.offsetTop / lineH);
           setRowOffset(Math.max(0, row - 1) * lineH);
         });

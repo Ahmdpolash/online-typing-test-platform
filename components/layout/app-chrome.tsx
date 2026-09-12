@@ -158,17 +158,16 @@ function SiteHeader() {
             </kbd>
           </motion.button>
 
-          {/* GitHub */}
-          <motion.a
-            className="flex items-center gap-2 rounded-full bg-foreground px-4 py-1.5 font-medium text-[13px] text-background transition-opacity hover:opacity-90"
-            href={siteConfig.github}
-            rel="noopener noreferrer"
-            target="_blank"
-            whileTap={{ scale: 0.96 }}
+          {/* GitHub (Temporarily disabled until full project release) */}
+          <button
+            aria-disabled="true"
+            className="flex cursor-not-allowed items-center gap-2 rounded-full bg-foreground/80 px-4 py-1.5 font-medium text-[13px] text-background opacity-75"
+            title="GitHub link will be enabled once full project is released"
+            type="button"
           >
             <GithubLogo size={15} weight="duotone" />
             <span className="hidden sm:inline">GitHub</span>
-          </motion.a>
+          </button>
         </div>
       </div>
     </header>

@@ -1,8 +1,7 @@
 "use client";
 
-import { At, Hash, TextAa } from "@phosphor-icons/react";
+import { At, Hash } from "@phosphor-icons/react";
 import { LayoutGroup } from "motion/react";
-import { useSettings } from "@/components/settings/settings-provider";
 import { cn } from "@/lib/utils";
 import {
   groupClass,
@@ -30,11 +29,9 @@ export function DesktopToolbar({
   onNumbersToggle,
   onDifficultyToggle,
 }: TestControlsProps) {
-  const { fontSize, setFontSize, fontWeight, setFontWeight } = useSettings();
-
   return (
     <LayoutGroup id="toolbar">
-      <div className="flex flex-wrap items-center justify-center gap-2.5">
+      <div className="flex items-center justify-center gap-2.5">
         {/* Toggles */}
         <div className={groupClass}>
           <Toggle active={punctuation} onClick={onPunctuationToggle}>
@@ -92,43 +89,6 @@ export function DesktopToolbar({
             timeOption={timeOption}
             wordOption={wordOption}
           />
-        </div>
-
-        {/* Font Size & Weight Controls */}
-        <div className={groupClass}>
-          <span className="flex items-center pl-2 text-muted-foreground/50">
-            <TextAa size={14} weight="bold" />
-          </span>
-          <Selector
-            active={fontSize === "small"}
-            layoutId="font-size"
-            onClick={() => setFontSize("small")}
-          >
-            18
-          </Selector>
-          <Selector
-            active={fontSize === "medium"}
-            layoutId="font-size"
-            onClick={() => setFontSize("medium")}
-          >
-            24
-          </Selector>
-          <Selector
-            active={fontSize === "large"}
-            layoutId="font-size"
-            onClick={() => setFontSize("large")}
-          >
-            30
-          </Selector>
-          <Sep />
-          <Toggle
-            active={fontWeight === "bold"}
-            onClick={() =>
-              setFontWeight(fontWeight === "bold" ? "normal" : "bold")
-            }
-          >
-            bold
-          </Toggle>
         </div>
       </div>
     </LayoutGroup>

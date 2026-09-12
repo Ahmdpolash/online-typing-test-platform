@@ -18,6 +18,8 @@ import {
   useRef,
   useState,
 } from "react";
+import NumberFlow from "@number-flow/react";
+import { useParticipantCount } from "@/hooks/use-participant-count";
 import { TypeBlazeLogo } from "@/components/layout/typeblaze-logo";
 import { SettingsPanel } from "@/components/settings/settings-panel";
 import { useSettings } from "@/components/settings/settings-provider";
@@ -87,6 +89,7 @@ function SiteHeader() {
   const router = useRouter();
   const { setSettingsOpen, homeLogoHandlerRef } = useAppChrome();
   const { soundEnabled, setSoundEnabled } = useSettings();
+  const { count: participantCount } = useParticipantCount();
 
   function handleLogoClick() {
     if (homeLogoHandlerRef.current) {
@@ -103,13 +106,29 @@ function SiteHeader() {
       <div className="relative flex w-full max-w-[1240px] items-center justify-between">
         {/* Logo */}
         <button
-          className="flex cursor-pointer items-end gap-1 font-semibold text-primary text-xl tracking-tight"
+          className="flex cursor-pointer items-center gap-1.5 font-bold text-primary text-2xl tracking-tight transition-transform hover:scale-[1.02]"
           onClick={handleLogoClick}
           type="button"
         >
-          typester
-          <TypeBlazeLogo className="mb-1" size={17} />
+          <span>typester</span>
+          <TypeBlazeLogo size={20} />
         </button>
+
+        {/* Center — Live Completed Tests / Participants Counter */}
+        <div className="hidden sm:flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1 text-xs text-muted-foreground shadow-sm">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+          </span>
+          <span>completed:</span>
+          <span className="font-semibold text-foreground tabular-nums">
+            {participantCount !== null ? (
+              <NumberFlow value={participantCount} />
+            ) : (
+              "..."
+            )}
+          </span>
+        </div>
 
         {/* Right — Audio, Settings, GitHub */}
         <div className="flex items-center gap-2">

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { fetchLanguageWords } from "@/lib/languages";
 import { getQuote, type QuoteLength } from "@/lib/quotes";
+import { notifyTestCompleted } from "@/hooks/use-participant-count";
 import {
   DIFFICULTY_STORAGE_KEY,
   NUMBERS_STORAGE_KEY,
@@ -147,6 +148,7 @@ export function useTypingTest({
     onTypingActiveChange?.(false);
     setScreenFade(0);
     requestAnimationFrame(() => setScreenFade(1));
+    notifyTestCompleted();
   }, [onFinished, onTypingActiveChange]);
 
   finishTestRef.current = finishTest;

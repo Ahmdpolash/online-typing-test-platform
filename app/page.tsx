@@ -40,9 +40,9 @@ export default function Page() {
     <div className="flex flex-1 flex-col">
       <main
         className={cn(
-          "flex flex-col px-6",
+          "flex flex-col px-4 sm:px-6 lg:px-8",
           isFinished
-            ? "flex-1 justify-center px-10 py-2"
+            ? "flex-1 justify-center px-6 py-2 sm:px-10"
             : "flex-1 items-center justify-center"
         )}
       >
@@ -83,7 +83,7 @@ export default function Page() {
               rel="noopener noreferrer"
               target="_blank"
             >
-              TypeBlaze
+              Typester
             </a>
           </p>
         </footer>

@@ -12,7 +12,6 @@ import { useRouter } from "next/navigation";
 import {
   createContext,
   type ReactNode,
-  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -23,6 +22,7 @@ import { TypeBlazeLogo } from "@/components/layout/typeblaze-logo";
 import { SettingsPanel } from "@/components/settings/settings-panel";
 import { useSettings } from "@/components/settings/settings-provider";
 import { DynamicFavicon } from "@/components/theme/dynamic-favicon";
+import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 interface AppChromeContextValue {
@@ -85,27 +85,8 @@ export function AppChrome({ children }: { children: ReactNode }) {
 
 function SiteHeader() {
   const router = useRouter();
-  const { setSettingsOpen, typingActive, homeLogoHandlerRef } = useAppChrome();
+  const { setSettingsOpen, homeLogoHandlerRef } = useAppChrome();
   const { soundEnabled, setSoundEnabled } = useSettings();
-
-  const [mouseHeaderVisible, setMouseHeaderVisible] = useState(false);
-  const headerTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const headerVisible = !typingActive || mouseHeaderVisible;
-
-  useEffect(
-    () => () => {
-      if (headerTimerRef.current) clearTimeout(headerTimerRef.current);
-    },
-    []
-  );
-
-  const handleHeaderMouseMove = useCallback(() => {
-    if (!typingActive) return;
-    setMouseHeaderVisible(true);
-    if (headerTimerRef.current) clearTimeout(headerTimerRef.current);
-    headerTimerRef.current = setTimeout(() => setMouseHeaderVisible(false), 2500);
-  }, [typingActive]);
 
   function handleLogoClick() {
     if (homeLogoHandlerRef.current) {
@@ -115,23 +96,18 @@ function SiteHeader() {
     router.push("/");
   }
 
-  const headerOpacity = typingActive ? (headerVisible ? 1 : 0.1) : 1;
-
   return (
-    <motion.header
-      animate={{ opacity: headerOpacity }}
+    <header
       className="flex shrink-0 justify-center px-6 py-4 md:px-10 md:py-5"
-      onMouseMove={handleHeaderMouseMove}
-      transition={{ duration: 0.4, ease: "easeInOut" }}
     >
-      <div className="relative flex w-full max-w-5xl items-center justify-between">
+      <div className="relative flex w-full max-w-[1240px] items-center justify-between">
         {/* Logo */}
         <button
           className="flex cursor-pointer items-end gap-1 font-semibold text-primary text-xl tracking-tight"
           onClick={handleLogoClick}
           type="button"
         >
-          typeblaze
+          typester
           <TypeBlazeLogo className="mb-1" size={17} />
         </button>
 
@@ -184,8 +160,8 @@ function SiteHeader() {
 
           {/* GitHub */}
           <motion.a
-            className="flex items-center gap-2 rounded-full bg-foreground px-4 py-1.5 font-medium text-[13px] text-background"
-            href="https://github.com"
+            className="flex items-center gap-2 rounded-full bg-foreground px-4 py-1.5 font-medium text-[13px] text-background transition-opacity hover:opacity-90"
+            href={siteConfig.github}
             rel="noopener noreferrer"
             target="_blank"
             whileTap={{ scale: 0.96 }}
@@ -195,6 +171,6 @@ function SiteHeader() {
           </motion.a>
         </div>
       </div>
-    </motion.header>
+    </header>
   );
 }

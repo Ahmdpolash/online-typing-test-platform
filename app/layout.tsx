@@ -20,8 +20,8 @@ const fontMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "TypeBlaze — Free Typing Test with Mechanical Keyboard Sounds | WPM & Accuracy",
-    template: "%s | TypeBlaze",
+    default: "Typester — Minimalist Typing Test with Mechanical Keyboard Sounds | WPM & Accuracy",
+    template: "%s | Typester",
   },
   description: siteConfig.description,
   keywords: [
@@ -36,7 +36,8 @@ export const metadata: Metadata = {
     "typing speed",
     "keyboard test",
     "mechanical keyboard sounds",
-    "TypeBlaze",
+    "monkeytype clone",
+    "Typester",
   ],
   creator: siteConfig.creator,
   metadataBase: new URL(siteConfig.url),
@@ -45,13 +46,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteConfig.url,
-    title: "TypeBlaze — Free Typing Test with Mechanical Keyboard Sounds",
+    title: "Typester — Minimalist Typing Test with Mechanical Keyboard Sounds",
     description: siteConfig.description,
     siteName: siteConfig.name,
   },
   twitter: {
     card: "summary_large_image",
-    title: "TypeBlaze — Typing Test with Mechanical Keyboard Sounds",
+    title: "Typester — Typing Test with Mechanical Keyboard Sounds",
     description: siteConfig.description,
   },
   robots: {

@@ -19,17 +19,19 @@ interface TypingTestProps {
 }
 
 export function TypingTest(props: TypingTestProps) {
-  const { liveStats, faahMode, ghostMode } = useSettings();
+  const { liveStats, faahMode, ghostMode, soundVolume, soundEnabled } = useSettings();
   const faahAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const onWrongKey = useCallback(() => {
-    if (!faahMode) return;
+    if (!faahMode || !soundEnabled) return;
     if (!faahAudioRef.current) {
       faahAudioRef.current = new Audio("/sounds/fahhhhh.mp3");
     }
+    // Scale volume down gently to avoid headphone ear fatigue (max ~20% of master volume)
+    faahAudioRef.current.volume = Math.max(0, Math.min(1, soundVolume * 0.2));
     faahAudioRef.current.currentTime = 0;
     void faahAudioRef.current.play();
-  }, [faahMode]);
+  }, [faahMode, soundEnabled, soundVolume]);
 
   const {
     mode, timeOption, wordOption, quoteLength,
@@ -86,7 +88,7 @@ export function TypingTest(props: TypingTestProps) {
     // biome-ignore lint/a11y/useKeyWithClickEvents: keyboard focus handled via global keydown
     // biome-ignore lint/a11y/noStaticElementInteractions: intentional click-to-focus area
     <div
-      className="flex w-full max-w-5xl flex-col items-center gap-3 transition-all duration-150 ease-out"
+      className="flex w-full max-w-[1240px] flex-col items-center gap-4 px-2 transition-all duration-150 ease-out sm:px-6"
       onClick={handleFocus}
       onMouseMove={handleMouseMove}
       style={{

@@ -1,6 +1,7 @@
 export type KeyboardEventSource = "physical" | "pointer";
 export type KeyboardEventPhase = "down" | "up";
 export type KeyboardThemeName =
+  | "carbon"
   | "classic"
   | "mint"
   | "royal"

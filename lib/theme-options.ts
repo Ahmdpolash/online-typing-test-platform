@@ -5,6 +5,7 @@ export const THEME_OPTIONS: {
   label: string;
   colors: [string, string, string];
 }[] = [
+  { id: "carbon", label: "Carbon (Monkeytype)", colors: ["#323437", "#646669", "#E2B714"] },
   { id: "classic", label: "Classic", colors: ["#F5F5F5", "#737373", "#F57644"] },
   { id: "mint", label: "Mint", colors: ["#EEEEEE", "#447B82", "#86C8AC"] },
   { id: "royal", label: "Royal", colors: ["#324974", "#3A3B35", "#E4D440"] },

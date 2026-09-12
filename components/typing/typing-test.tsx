@@ -18,8 +18,29 @@ interface TypingTestProps {
   pauseTypingInputRefocus?: boolean;
 }
 
+const FONT_SIZE_STYLES = {
+  small: "text-xl h-[6.8rem]",
+  medium: "text-2xl h-[7.8rem]",
+  large: "text-3xl h-[9.6rem]",
+  xlarge: "text-4xl h-[11.8rem]",
+};
+
+const FONT_WEIGHT_STYLES = {
+  normal: "font-normal",
+  medium: "font-medium",
+  bold: "font-bold",
+};
+
 export function TypingTest(props: TypingTestProps) {
-  const { liveStats, faahMode, ghostMode, soundVolume, soundEnabled } = useSettings();
+  const {
+    liveStats,
+    faahMode,
+    ghostMode,
+    soundVolume,
+    soundEnabled,
+    fontSize,
+    fontWeight,
+  } = useSettings();
   const faahAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const onWrongKey = useCallback(() => {
@@ -160,7 +181,9 @@ export function TypingTest(props: TypingTestProps) {
 
         <div
           className={cn(
-            "relative h-[7.8rem] w-full overflow-hidden text-2xl leading-relaxed",
+            "relative w-full overflow-hidden leading-relaxed transition-all duration-150",
+            FONT_SIZE_STYLES[fontSize] ?? FONT_SIZE_STYLES.medium,
+            FONT_WEIGHT_STYLES[fontWeight] ?? FONT_WEIGHT_STYLES.normal,
             isActivelyTyping && "is-typing"
           )}
           ref={wordsContainerRef}

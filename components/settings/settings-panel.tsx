@@ -31,6 +31,8 @@ export function SettingsPanel({ open, onOpenChange }: SettingsPanelProps) {
   const {
     accent, setAccent,
     font, setFont,
+    fontSize, setFontSize,
+    fontWeight, setFontWeight,
     showKeyboard, setShowKeyboard,
     soundEnabled, setSoundEnabled,
     soundVolume, setSoundVolume,
@@ -98,6 +100,52 @@ export function SettingsPanel({ open, onOpenChange }: SettingsPanelProps) {
               >
                 <FontList active={font} onSelect={setFont} />
               </SubDrawerRow>
+
+              <Row label="Font Size">
+                <div className="flex items-center gap-1 rounded-lg bg-foreground/[0.05] p-1">
+                  {(["small", "medium", "large", "xlarge"] as const).map((s) => (
+                    <button
+                      className={cn(
+                        "cursor-pointer rounded px-2.5 py-1 font-medium text-xs transition-colors",
+                        fontSize === s
+                          ? "bg-primary text-primary-foreground shadow-xs"
+                          : "text-muted-foreground hover:text-foreground"
+                      )}
+                      key={s}
+                      onClick={() => setFontSize(s)}
+                      type="button"
+                    >
+                      {s === "small"
+                        ? "18px"
+                        : s === "medium"
+                        ? "24px"
+                        : s === "large"
+                        ? "30px"
+                        : "36px"}
+                    </button>
+                  ))}
+                </div>
+              </Row>
+
+              <Row label="Font Weight">
+                <div className="flex items-center gap-1 rounded-lg bg-foreground/[0.05] p-1">
+                  {(["normal", "medium", "bold"] as const).map((w) => (
+                    <button
+                      className={cn(
+                        "cursor-pointer rounded px-2.5 py-1 font-medium text-xs capitalize transition-colors",
+                        fontWeight === w
+                          ? "bg-primary text-primary-foreground shadow-xs"
+                          : "text-muted-foreground hover:text-foreground"
+                      )}
+                      key={w}
+                      onClick={() => setFontWeight(w)}
+                      type="button"
+                    >
+                      {w}
+                    </button>
+                  ))}
+                </div>
+              </Row>
             </Section>
 
             {/* Keyboard */}

@@ -89,7 +89,7 @@ export default function RootLayout({
         {/* Blocking script: apply saved accent before first paint to prevent flash */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var a=localStorage.getItem("tb-accent");if(a)document.documentElement.setAttribute("data-accent",a)}catch(e){}})()`,
+            __html: `(function(){try{var a=localStorage.getItem("tb-accent")||"carbon";document.documentElement.setAttribute("data-accent",a)}catch(e){}})()`,
           }}
         />
       </head>

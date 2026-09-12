@@ -19,16 +19,23 @@ export {
 } from "@/lib/font-options";
 export { THEME_OPTIONS } from "@/lib/theme-options";
 
+export type TypingFontSize = "small" | "medium" | "large" | "xlarge";
+export type TypingFontWeight = "normal" | "medium" | "bold";
+
 interface SettingsContextType {
   accent: KeyboardThemeName;
   faahMode: boolean;
   font: TypingFont;
   fontCssFamily: string;
+  fontSize: TypingFontSize;
+  fontWeight: TypingFontWeight;
   ghostMode: boolean;
   liveStats: boolean;
   setAccent: (c: KeyboardThemeName) => void;
   setFaahMode: (v: boolean) => void;
   setFont: (f: TypingFont) => void;
+  setFontSize: (s: TypingFontSize) => void;
+  setFontWeight: (w: TypingFontWeight) => void;
   setGhostMode: (v: boolean) => void;
   setLiveStats: (v: boolean) => void;
   setShowKeyboard: (v: boolean) => void;
@@ -66,8 +73,10 @@ function applyFontToDom(fontId: TypingFont) {
 }
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
-  const [accent, setAccentState] = useState<KeyboardThemeName>("classic");
+  const [accent, setAccentState] = useState<KeyboardThemeName>("carbon");
   const [font, setFontState] = useState<TypingFont>("geist-mono");
+  const [fontSize, setFontSizeState] = useState<TypingFontSize>("medium");
+  const [fontWeight, setFontWeightState] = useState<TypingFontWeight>("normal");
   const [showKeyboard, setShowKeyboardState] = useState(true);
   const [soundEnabled, setSoundEnabledState] = useState(true);
   const [soundVolume, setSoundVolumeState] = useState(0.8);
@@ -80,6 +89,8 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     const validThemes = new Set<string>(THEME_OPTIONS.map((t) => t.id));
     const rawAccent = localStorage.getItem("tb-accent");
     const savedFont = localStorage.getItem("tb-font") as TypingFont | null;
+    const savedFontSize = localStorage.getItem("tb-font-size") as TypingFontSize | null;
+    const savedFontWeight = localStorage.getItem("tb-font-weight") as TypingFontWeight | null;
     const savedShowKeyboard = localStorage.getItem("tb-show-keyboard");
     const savedSoundEnabled = localStorage.getItem("tb-sound-enabled");
     const savedSoundVolume = localStorage.getItem("tb-sound-volume");
@@ -90,13 +101,19 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     const initialAccent =
       rawAccent && validThemes.has(rawAccent)
         ? (rawAccent as KeyboardThemeName)
-        : "classic";
+        : "carbon";
     setAccentState(initialAccent);
     applyAccentToDom(initialAccent);
 
     if (savedFont) {
       setFontState(savedFont);
       applyFontToDom(savedFont);
+    }
+    if (savedFontSize && ["small", "medium", "large", "xlarge"].includes(savedFontSize)) {
+      setFontSizeState(savedFontSize);
+    }
+    if (savedFontWeight && ["normal", "medium", "bold"].includes(savedFontWeight)) {
+      setFontWeightState(savedFontWeight);
     }
     if (savedShowKeyboard !== null) {
       setShowKeyboardState(savedShowKeyboard !== "false");
@@ -164,6 +181,16 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("tb-ghost-mode", String(v));
   };
 
+  const setFontSize = (s: TypingFontSize) => {
+    setFontSizeState(s);
+    localStorage.setItem("tb-font-size", s);
+  };
+
+  const setFontWeight = (w: TypingFontWeight) => {
+    setFontWeightState(w);
+    localStorage.setItem("tb-font-weight", w);
+  };
+
   const fontCssFamily =
     FONT_OPTIONS.find((f) => f.id === font)?.cssFamily ?? "var(--font-mono)";
 
@@ -175,6 +202,10 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
         font,
         setFont,
         fontCssFamily,
+        fontSize,
+        setFontSize,
+        fontWeight,
+        setFontWeight,
         showKeyboard,
         setShowKeyboard,
         soundEnabled,

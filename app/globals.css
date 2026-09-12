@@ -123,11 +123,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    background-color: color-mix(
-      in oklch,
-      var(--kb-light) 20%,
-      var(--background)
-    );
+    background-color: var(--background);
     @apply text-foreground;
   }
   .dark body {
@@ -139,6 +135,21 @@
 }
 
 /* ── Keyboard-theme colour schemes ───────────────────────────── */
+
+/* carbon (Monkeytype) */
+:root[data-accent="carbon"],
+:root.dark[data-accent="carbon"] {
+  --primary: #e2b714;
+  --ring: #e2b714;
+  --kb-dark: #2c2e31;
+  --kb-light: #3c3f43;
+  --background: #323437;
+  --foreground: #d1d0c5;
+  --muted-foreground: #646669;
+  --card: #2c2e31;
+  --popover: #2c2e31;
+  --muted: #2c2e31;
+}
 
 /* classic */
 :root[data-accent="classic"] {

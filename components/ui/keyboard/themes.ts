@@ -30,6 +30,17 @@ export const MINT_DARK_KEYS: KEYCODE[] = [
 ];
 
 export const KEYBOARD_THEMES: Record<KeyboardThemeName, KeyboardThemeDefinition> = {
+  carbon: {
+    variants: {
+      accent: { bg: "#E2B714", text: "#323437" },
+      dark: { bg: "#2C2E31", text: "rgba(255,255,255,0.7)" },
+      light: { bg: "#3C3F43", text: "#D1D0C5" },
+    },
+    keyVariantOverrides: buildKeyVariantOverrides({
+      accent: [KEYCODE.Escape, KEYCODE.Enter, KEYCODE.Space],
+      dark: CLASSIC_DARK_KEYS,
+    }),
+  },
   classic: {
     variants: {
       accent: { bg: "#F57644", text: "rgba(0,0,0,0.5)" },

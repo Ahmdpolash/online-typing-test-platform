@@ -82,6 +82,9 @@ export function TypingTest(props: TypingTestProps) {
         return;
       }
       if (!isFocused && !showResults && inputRef.current) {
+        if (e.key === "Tab") {
+          e.preventDefault();
+        }
         inputRef.current.focus();
       }
     };
@@ -217,7 +220,11 @@ export function TypingTest(props: TypingTestProps) {
               animate={{
                 y: -rowOffset,
                 opacity: wordsOpacity,
-                filter: resetting ? "blur(4px)" : "blur(0px)",
+                filter: resetting
+                  ? "blur(4px)"
+                  : !isFocused
+                  ? "blur(3.5px)"
+                  : "blur(0px)",
               }}
               className="flex flex-wrap gap-x-2.5 gap-y-0"
               transition={
@@ -265,14 +272,15 @@ export function TypingTest(props: TypingTestProps) {
           {!isFocused && !resetting && (
             <motion.div
               animate={{ opacity: 1 }}
-              className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-2"
+              className="absolute inset-0 z-20 flex cursor-pointer items-center justify-center"
               exit={{ opacity: 0 }}
               initial={{ opacity: 0 }}
+              onClick={handleFocus}
               transition={{ duration: 0.15 }}
             >
-              <div className="flex items-center gap-2 rounded-full border border-white/10 bg-[#26282d]/85 px-5 py-2 font-medium text-foreground text-sm shadow-xl backdrop-blur-md">
-                <Cursor className="text-primary" size={16} weight="duotone" />
-                <span>Click or press any key to focus</span>
+              <div className="flex items-center gap-2.5 rounded-full border border-black/10 bg-white/95 px-6 py-2.5 text-neutral-900 text-[15px] font-medium tracking-wide shadow-xl backdrop-blur-md select-none transition-all hover:scale-[1.02] dark:border-white/15 dark:bg-[#26282d]/95 dark:text-white">
+                <Cursor className="text-primary" size={17} weight="bold" />
+                <span>click here to continue (or press TAB)</span>
               </div>
             </motion.div>
           )}

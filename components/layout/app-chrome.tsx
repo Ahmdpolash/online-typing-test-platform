@@ -89,7 +89,7 @@ function SiteHeader() {
   const router = useRouter();
   const { setSettingsOpen, homeLogoHandlerRef } = useAppChrome();
   const { soundEnabled, setSoundEnabled } = useSettings();
-  const { count: participantCount } = useParticipantCount();
+  const { completedCount, onlineCount } = useParticipantCount();
 
   function handleLogoClick() {
     if (homeLogoHandlerRef.current) {
@@ -114,20 +114,29 @@ function SiteHeader() {
           <TypeBlazeLogo size={20} />
         </button>
 
-        {/* Center — Live Completed Tests / Participants Counter */}
-        <div className="hidden sm:flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1 text-xs text-muted-foreground shadow-sm">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-          </span>
-          <span>completed:</span>
-          <span className="font-semibold text-foreground tabular-nums">
-            {participantCount !== null ? (
-              <NumberFlow value={participantCount} />
-            ) : (
-              "..."
-            )}
-          </span>
+        {/* Center — Live Online Visitors & Completed Tests Counter */}
+        <div className="hidden sm:flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1 text-xs text-muted-foreground shadow-sm backdrop-blur-sm">
+          <div className="flex items-center gap-1.5" title="Real-time active visitors">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+            </span>
+            <span className="font-semibold text-foreground tabular-nums">
+              <NumberFlow value={onlineCount} />
+            </span>
+            <span>online</span>
+          </div>
+          <div className="h-3 w-px bg-white/15" />
+          <div className="flex items-center gap-1.5" title="Total completed typing tests">
+            <span>completed:</span>
+            <span className="font-semibold text-foreground tabular-nums">
+              {completedCount !== null ? (
+                <NumberFlow value={completedCount} />
+              ) : (
+                "..."
+              )}
+            </span>
+          </div>
         </div>
 
         {/* Right — Audio, Settings, GitHub */}

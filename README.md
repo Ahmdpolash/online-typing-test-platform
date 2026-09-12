@@ -1,4 +1,4 @@
-# ⌨️ Typester
+# Typester
 
 <p align="center">
   <a href="https://github.com/Ahmdpolash/online-typing-test-platform">
@@ -11,35 +11,39 @@
 </p>
 
 <p align="center">
-  A sleek, minimalist online typing test platform inspired by <b>Monkeytype</b>, featuring realistic mechanical keyboard sounds, real-time WPM/accuracy tracking, smooth animations, and versatile practice modes.
+  A sleek, minimalist online typing test platform inspired by <b>Monkeytype</b>, featuring realistic mechanical keyboard sounds, real-time WPM and accuracy tracking, smooth animations, and versatile practice modes.
+</p>
+
+<p align="center">
+  <img src="./public/image.png" alt="Typester Interface Preview" width="100%" />
 </p>
 
 ---
 
-## ✨ Features
+## Features
 
-- 🎧 **Realistic Mechanical Keyboard Audio**: Web Audio API sound sprite delivering satisfying mechanical key sound profiles and tactile haptic feedback.
-- 🎨 **Monkeytype Carbon Dark Aesthetic**: Warm matte charcoal background (`#323437`), soft cream typed text (`#d1d0c5`), muted slate untyped words (`#646669`), and iconic golden accent (`#e2b714`).
-- ⏱️ **Versatile Test Modes**:
+- **Realistic Mechanical Keyboard Audio**: Web Audio API sound sprite delivering satisfying mechanical key sound profiles and tactile haptic feedback.
+- **Monkeytype Carbon Dark Aesthetic**: Warm matte charcoal background (`#323437`), soft cream typed text (`#d1d0c5`), muted slate untyped words (`#646669`), and iconic golden accent (`#e2b714`).
+- **Versatile Test Modes**:
   - **Time Mode**: 15s, 30s, 60s, 120s speed tests.
   - **Words Mode**: 10, 25, 50, 100 fixed word counts.
   - **Quote Mode**: Practice quotes categorized by Short, Medium, and Long.
   - **Zen Mode**: Distraction-free, endless typing flow.
-- 🎛️ **Modifiers & Difficulty**:
+- **Modifiers & Difficulty**:
   - Punctuation toggle (`@ punctuation`).
   - Numbers toggle (`# numbers`).
   - Difficulty toggle (`easy` / `hard`).
-- 📊 **Detailed Real-time Analytics**:
-  - Real-time Gross WPM, Net WPM, and Accuracy %.
+- **Detailed Real-time Analytics**:
+  - Real-time Gross WPM, Net WPM, and Accuracy percentage.
   - Interactive consistency graph with keystroke burst tracking powered by Recharts.
   - Character accuracy breakdown (correct, incorrect, extra, missed).
-- ⌨️ **Interactive Virtual Keyboard**: Highlighting pressed keys in real time with custom mechanical keycap themes (Classic, Mint, Royal, Dolch, Sand, Scarlet).
-- 🌍 **Multi-Language Support**: Support for English, Spanish, French, German, and more.
-- 🚀 **SEO & PWA Ready**: Dynamic `sitemap.xml`, `robots.txt`, and web app `manifest.json` for full search engine indexing and mobile installation.
+- **Interactive Virtual Keyboard**: Highlighting pressed keys in real time with custom mechanical keycap themes (Classic, Mint, Royal, Dolch, Sand, Scarlet).
+- **Multi-Language Support**: Support for English, Spanish, French, German, and more.
+- **SEO & PWA Ready**: Dynamic `sitemap.xml`, `robots.txt`, and web app `manifest.json` for search engine indexing and mobile installation.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 | :--- | :--- |
@@ -54,7 +58,7 @@
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 typing test/
@@ -82,13 +86,14 @@ typing test/
 │   ├── test-storage.ts      # LocalStorage persistence utilities
 │   └── wpm-count.ts         # Net / Gross WPM and accuracy algorithms
 └── public/
+    ├── image.png            # Application preview screenshot
     ├── languages/           # Multi-language word dictionaries
     └── sounds/              # Mechanical keyboard audio sprite files
 ```
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -117,7 +122,7 @@ typing test/
 
 ---
 
-## 🗺️ Roadmap
+## Roadmap
 
 - [x] Rebrand to **Typester**
 - [x] Signature Monkeytype Matte Carbon Dark theme (`#323437`)
@@ -131,14 +136,14 @@ typing test/
 
 ---
 
-## 👨‍💻 Author
+## Author
 
-Crafted with ❤️ by **[Polash](https://www.linkedin.com/in/polashahmed)**.
+Crafted by **[Polash](https://www.linkedin.com/in/polashahmed)**.
 
-Feel free to connect on [LinkedIn](https://www.linkedin.com/in/polashahmed) or submit an issue/PR on [GitHub](https://github.com/Ahmdpolash/online-typing-test-platform).
+Feel free to connect on [LinkedIn](https://www.linkedin.com/in/polashahmed) or submit an issue or PR on [GitHub](https://github.com/Ahmdpolash/online-typing-test-platform).
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the [MIT License](LICENSE).

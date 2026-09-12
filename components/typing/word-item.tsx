@@ -40,10 +40,12 @@ export const WordItem = memo(function WordItem({
       style={dimmed ? { opacity: 0.05 } : undefined}
     >
       {word.split("").map((char, cIdx) => {
-        let color = "text-muted-foreground";
+        let color = "text-muted-foreground/40";
         if ((isPast || isActive) && cIdx < displayInput.length) {
           color =
-            displayInput[cIdx] === char ? "text-foreground" : "text-destructive";
+            displayInput[cIdx] === char
+              ? "text-foreground font-medium"
+              : "text-destructive font-medium";
         }
         const isLastChar = cIdx === word.length - 1;
 

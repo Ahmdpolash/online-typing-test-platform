@@ -2,11 +2,8 @@
 
 import { DownloadSimple, Info } from "@phosphor-icons/react";
 import { type ReactNode, useState } from "react";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { exportScoreToPdf } from "@/lib/pdf-export";
 import type { ResultStats, WpmSnapshot } from "@/lib/types";
 
 export const actionBtnClass =
@@ -50,13 +47,17 @@ export function ResultsActionButton({
 }
 
 export function DownloadResultsPopover({ stats }: { stats: ResultStats }) {
+  const downloadPdf = () => {
+    exportScoreToPdf(stats);
+  };
+
   const downloadJson = () => {
     const dataStr =
       "data:text/json;charset=utf-8," +
       encodeURIComponent(JSON.stringify(stats, null, 2));
     const a = document.createElement("a");
     a.setAttribute("href", dataStr);
-    a.setAttribute("download", `typeblaze-${new Date().toISOString()}.json`);
+    a.setAttribute("download", `typester-${new Date().toISOString()}.json`);
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -72,7 +73,7 @@ export function DownloadResultsPopover({ stats }: { stats: ResultStats }) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `typeblaze-${new Date().toISOString()}.csv`;
+    a.download = `typester-${new Date().toISOString()}.csv`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -83,17 +84,29 @@ export function DownloadResultsPopover({ stats }: { stats: ResultStats }) {
         <DownloadSimple aria-hidden size={15} weight="duotone" />
         download
       </PopoverTrigger>
-      <PopoverContent align="center" className="w-36 p-1" side="top" sideOffset={8}>
+      <PopoverContent align="center" className="w-44 p-1.5" side="top" sideOffset={8}>
         <div className="flex flex-col gap-1">
           <button
-            className="w-full rounded-md px-2 py-1.5 text-left text-foreground text-xs transition-colors hover:bg-muted"
+            className="flex w-full cursor-pointer items-center justify-between rounded-md px-2.5 py-2 text-left font-medium text-foreground text-xs transition-colors hover:bg-muted"
+            onClick={downloadPdf}
+            type="button"
+          >
+            <span>PDF Scorecard</span>
+            <span className="rounded bg-primary/20 px-1 py-0.5 font-bold text-[9px] text-primary uppercase">
+              PDF
+            </span>
+          </button>
+          <button
+            className="w-full cursor-pointer rounded-md px-2.5 py-1.5 text-left text-muted-foreground text-xs transition-colors hover:bg-muted hover:text-foreground"
             onClick={downloadJson}
+            type="button"
           >
             JSON format
           </button>
           <button
-            className="w-full rounded-md px-2 py-1.5 text-left text-foreground text-xs transition-colors hover:bg-muted"
+            className="w-full cursor-pointer rounded-md px-2.5 py-1.5 text-left text-muted-foreground text-xs transition-colors hover:bg-muted hover:text-foreground"
             onClick={downloadCsv}
+            type="button"
           >
             CSV format
           </button>

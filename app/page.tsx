@@ -75,10 +75,10 @@ export default function Page() {
               volume={soundVolume}
             />
           </div>
-          <p className="text-muted-foreground/40 text-xs">
+          <p className="mt-2 text-muted-foreground text-xs">
             Built with ❤️ by{" "}
             <a
-              className="text-muted-foreground/60 underline-offset-2 hover:text-foreground hover:underline"
+              className="font-medium text-primary underline-offset-2 hover:underline"
               href={siteConfig.creatorUrl}
               rel="noopener noreferrer"
               target="_blank"

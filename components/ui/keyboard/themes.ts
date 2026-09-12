@@ -32,9 +32,9 @@ export const MINT_DARK_KEYS: KEYCODE[] = [
 export const KEYBOARD_THEMES: Record<KeyboardThemeName, KeyboardThemeDefinition> = {
   carbon: {
     variants: {
-      accent: { bg: "#E2B714", text: "#323437" },
-      dark: { bg: "#2C2E31", text: "rgba(255,255,255,0.7)" },
-      light: { bg: "#3C3F43", text: "#D1D0C5" },
+      accent: { bg: "#E2B714", text: "#18191C" },
+      dark: { bg: "#222428", text: "#CBD5E1" },
+      light: { bg: "#2C2E34", text: "#F8FAFC" },
     },
     keyVariantOverrides: buildKeyVariantOverrides({
       accent: [KEYCODE.Escape, KEYCODE.Enter, KEYCODE.Space],

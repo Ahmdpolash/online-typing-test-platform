@@ -98,11 +98,9 @@ export function TypingTest(props: TypingTestProps) {
     );
   }
 
-  let wordsOpacity = 0.15;
+  let wordsOpacity = 1;
   if (resetting) {
     wordsOpacity = 0;
-  } else if (isFocused) {
-    wordsOpacity = 1;
   }
 
   return (
@@ -258,14 +256,14 @@ export function TypingTest(props: TypingTestProps) {
           {!isFocused && !resetting && (
             <motion.div
               animate={{ opacity: 1 }}
-              className="absolute inset-0 flex flex-col items-center justify-center gap-2"
+              className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-2"
               exit={{ opacity: 0 }}
               initial={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.15 }}
             >
-              <div className="flex items-center gap-2 rounded-full bg-foreground/[0.06] px-4 py-2 text-muted-foreground text-sm backdrop-blur-sm">
-                <Cursor size={14} weight="duotone" />
-                click to focus
+              <div className="flex items-center gap-2 rounded-full border border-white/10 bg-[#26282d]/85 px-5 py-2 font-medium text-foreground text-sm shadow-xl backdrop-blur-md">
+                <Cursor className="text-primary" size={16} weight="duotone" />
+                <span>Click or press any key to focus</span>
               </div>
             </motion.div>
           )}
@@ -283,14 +281,14 @@ export function TypingTest(props: TypingTestProps) {
       >
         <button
           aria-label="Restart test"
-          className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-muted-foreground/40 text-xs transition-colors hover:text-muted-foreground"
+          className="flex cursor-pointer items-center gap-1.5 rounded-lg px-3 py-1.5 text-muted-foreground text-xs transition-colors hover:bg-white/[0.05] hover:text-foreground"
           onClick={onRestart}
           type="button"
         >
-          <ArrowCounterClockwise size={13} weight="duotone" />
+          <ArrowCounterClockwise size={14} weight="duotone" />
           restart
         </button>
-        <span className="text-muted-foreground/25 text-xs">
+        <span className="text-muted-foreground/60 text-xs">
           tab + enter to reset
         </span>
       </motion.div>

@@ -80,8 +80,8 @@ function KeyboardKeys() {
 
   return (
     <div>
-      <div className="h-fit w-fit rounded-[16px] border-2 border-black bg-black/70 p-3 dark:border-white/20 dark:bg-white/20">
-        <div className="h-[278px] rounded-[5px] rounded-t-[8px] border border-black bg-black/80 dark:border-zinc-500 dark:bg-zinc-700">
+      <div className="h-fit w-fit rounded-[16px] border border-black/80 bg-[#121315] p-3 shadow-2xl dark:border-white/10 dark:bg-[#121315]">
+        <div className="h-[278px] rounded-[5px] rounded-t-[8px] border border-black/60 bg-[#18191c] dark:border-white/10 dark:bg-[#18191c]">
           <div className="-translate-y-1 -space-y-1 overflow-hidden rounded-[5px]">
             <Row>
               <Key keyCode={KEYCODE.Escape}>{"esc"}</Key>
@@ -268,15 +268,15 @@ function Key({ width = 50, children, className, keyCode }: KeyProps) {
     >
       <div
         className={cn(
-          "relative flex h-[50px] items-start justify-center overflow-hidden rounded-[4px] rounded-t-[12px] border border-black/40 transition-all duration-100",
+          "relative flex h-[50px] items-start justify-center overflow-hidden rounded-[4px] rounded-t-[12px] border border-black/50 dark:border-white/10 transition-all duration-100",
           visuallyPressed && "h-[45px]"
         )}
         style={{ width: `${width}px`, backgroundColor: toRgba(keyVariant.bg, 0.8) }}
       >
         <div
           className={cn(
-            "relative z-10 h-[37px] rounded-[6px] border border-black/40 border-t-0 transition-all duration-100",
-            "flex select-none flex-col items-center justify-between gap-0.5 p-1 font-medium text-[9px]",
+            "relative z-10 h-[37px] rounded-[6px] border border-black/50 border-t-0 dark:border-white/10 transition-all duration-100",
+            "flex select-none flex-col items-center justify-between gap-0.5 p-1 font-semibold text-[10px]",
             className
           )}
           style={{

@@ -17,7 +17,7 @@ export const MODES = [
 export const pillEase = { duration: 0.2, ease: [0.23, 1, 0.32, 1] } as const;
 
 export const groupClass =
-  "flex items-center rounded-[16px] bg-black/[0.04] p-1.5 dark:bg-white/[0.06]";
+  "flex items-center rounded-[16px] bg-black/[0.04] p-1.5 dark:bg-[#26282d]/90 dark:border dark:border-white/10 shadow-sm";
 
 export function Toggle({
   active,
@@ -33,8 +33,8 @@ export function Toggle({
       className={cn(
         "flex cursor-pointer items-center gap-1.5 rounded-[11px] px-3 py-1.5 font-medium text-[13px] transition-colors duration-150",
         active
-          ? "text-primary"
-          : "text-muted-foreground/60 hover:text-foreground"
+          ? "font-semibold text-primary"
+          : "text-muted-foreground hover:text-foreground"
       )}
       onClick={onClick}
       type="button"
@@ -61,8 +61,8 @@ export function Selector({
       className={cn(
         "relative z-10 flex cursor-pointer items-center gap-1.5 rounded-[11px] px-3.5 py-1.5 font-medium text-[13px] transition-colors duration-150",
         active
-          ? "text-primary"
-          : "text-muted-foreground/60 hover:text-foreground"
+          ? "font-semibold text-primary"
+          : "text-muted-foreground hover:text-foreground"
       )}
       onClick={onClick}
       type="button"
@@ -71,7 +71,7 @@ export function Selector({
       {children}
       {active && (
         <motion.span
-          className="absolute inset-0 rounded-[11px] bg-primary/20 dark:bg-primary/15"
+          className="absolute inset-0 rounded-[11px] bg-primary/20 dark:bg-primary/20"
           layoutId={layoutId}
           transition={pillEase}
         />
@@ -81,7 +81,7 @@ export function Selector({
 }
 
 export function Sep() {
-  return <div className="mx-1 h-4.5 w-px bg-black/10 dark:bg-white/[0.08]" />;
+  return <div className="mx-1 h-4.5 w-px bg-black/10 dark:bg-white/15" />;
 }
 
 export function SubOptions({

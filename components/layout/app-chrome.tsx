@@ -117,10 +117,10 @@ function SiteHeader() {
           <motion.button
             aria-label={soundEnabled ? "Mute audio" : "Unmute audio"}
             className={cn(
-              "flex items-center gap-1.5 rounded-full bg-foreground/[0.05] px-3 py-1.5 text-[13px] transition-colors duration-150",
+              "flex items-center gap-1.5 rounded-full border border-white/10 px-3.5 py-1.5 font-medium text-[13px] transition-colors duration-150",
               soundEnabled
-                ? "text-muted-foreground hover:bg-foreground/[0.08] hover:text-foreground"
-                : "text-muted-foreground/35 hover:bg-foreground/[0.06] hover:text-muted-foreground"
+                ? "bg-white/[0.06] text-foreground hover:bg-white/10"
+                : "bg-white/[0.02] text-muted-foreground hover:bg-white/[0.06] hover:text-foreground"
             )}
             onClick={() => setSoundEnabled(!soundEnabled)}
             type="button"
@@ -145,14 +145,14 @@ function SiteHeader() {
           {/* Settings */}
           <motion.button
             aria-label="Settings"
-            className="flex items-center gap-1.5 rounded-full bg-foreground/[0.05] px-3 py-1.5 text-[13px] text-muted-foreground transition-colors duration-150 hover:bg-foreground/[0.08] hover:text-foreground"
+            className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.06] px-3.5 py-1.5 font-medium text-[13px] text-foreground transition-colors duration-150 hover:bg-white/10"
             onClick={() => setSettingsOpen(true)}
             type="button"
             whileTap={{ scale: 0.97 }}
           >
             <GearSix size={15} weight="duotone" />
             <span className="hidden sm:inline">Settings</span>
-            <kbd className="hidden items-center gap-px rounded border border-foreground/10 bg-foreground/[0.04] px-1 py-0.5 text-[10px] text-muted-foreground/40 leading-none sm:inline-flex">
+            <kbd className="hidden items-center gap-px rounded border border-white/15 bg-white/10 px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground leading-none sm:inline-flex">
               <Command size={10} weight="duotone" />
               <span>K</span>
             </kbd>
@@ -161,7 +161,7 @@ function SiteHeader() {
           {/* GitHub (Temporarily disabled until full project release) */}
           <button
             aria-disabled="true"
-            className="flex cursor-not-allowed items-center gap-2 rounded-full bg-foreground/80 px-4 py-1.5 font-medium text-[13px] text-background opacity-75"
+            className="flex cursor-not-allowed items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-1.5 font-medium text-[13px] text-muted-foreground opacity-75"
             title="GitHub link will be enabled once full project is released"
             type="button"
           >
